@@ -1,0 +1,213 @@
+
+body {
+	font-family: "Poppins", sans-serif;
+}
+.content-title {
+	font-size: 32px;
+	line-height: 48px;
+	color: #162034;
+	font-weight: 600;
+}
+.content-keranjang {
+	background-color: #f2f2f2;
+	padding: 20px;
+	margin-top: 2rem;
+	margin-bottom: 8rem;
+}
+
+.title-cart {
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 30px;
+	color: #162034;
+}
+.icon-social-media a {
+	text-decoration: none;
+}
+.icon-start {
+	margin-top: -9px;
+}
+.icon-start span {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 40px;
+	text-align: left;
+	color: #00000099;
+}
+
+.title-facility {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: #162034;
+}
+.list-facility li {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 19.25px;
+}
+.amount span {
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 14.04px;
+	color: #1d7c82;
+}
+.amount h3 {
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 23.4px;
+}
+.status h3 {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: #162034;
+}
+.status span {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: #1d7c82;
+}
+.title-order {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	color: #162034;
+}
+.labels h5 {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	color: #1d7c82;
+}
+.value h5 {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: #162034;
+}
+.title-total-payment {
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 30px;
+	color: #162034;
+}
+.amount {
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 36px;
+	color: #162034;
+}
+.button-cancel-order {
+	background-color: #162034;
+	padding: 10px 20px;
+	gap: 10px;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: white;
+}
+.total-payment h6 {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: #162034;
+}
+.total-payment span {
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: #1d7c82;
+}
+.footer {
+	background-color: #162034;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.name-hotel h1 {
+	color: white;
+	font-family: "Parisienne", cursive;
+	font-weight: bolder;
+	font-size: 28px;
+}
+
+.name-hotel p {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 21px;
+	color: #c7d2e8;
+	width: 299px;
+}
+.name-hotel span {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	color: #c7d2e8;
+	width: 299px;
+}
+.social-media h3 {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 21px;
+	color: #c7d2e8;
+}
+.navigation h3 {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	color: #c7d2e8;
+}
+
+.menu a {
+	text-decoration: none;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	color: #c1cbdd;
+	padding-top: 8px;
+}
+.recent-post h3 {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	color: #c7d2e8;
+}
+.title-contact-us {
+	font-weight: 500;
+	font-size: 300px;
+}
+.content-recent-post p {
+	color: #d2d9e8;
+	width: 157px;
+}
+.content-recent-post img {
+	width: 52px;
+	height: 52px;
+}
+.content-recent-post p {
+	font-family: Poppins;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 16.6px;
+	text-align: left;
+}
+
+.title-contact-us {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	color: #c7d2e8;
+}
+
+.contact-us h4 {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	color: #C1CBDD;
+	margin-top: 5px;
+}
+.contact-us h4 {
+	width: 269px;
+}

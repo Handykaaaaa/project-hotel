@@ -1,0 +1,78 @@
+<?php
+
+use App\Http\Controllers\Admin\AdminRoomController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\UserRoomController;
+use App\Http\Controllers\User\UserRoomDetailController;
+use App\Http\Controllers\User\UserBookingController;
+use App\Http\Controllers\User\UserCartController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+route::get('/home',[HomeController::class,'index'])->middleware('auth')->name('home');
+route::get('post',[HomeController::class,'post'])->middleware(['auth','admin']);
+
+//route buat rooms
+Route::get('/rooms', [UserRoomController::class, 'index'])->name('rooms');
+Route::get('/rooms/{room}', 'UserRoomController@show')->name('rooms.show');
+
+
+
+//route buat detail room
+Route::get('/roomdetail', [UserRoomDetailController::class,'index'])->name('detail');
+Route::get('/detail/{id}', 'UserRoomDetailController@detail')->name('room.detail');
+
+
+
+//route buat booking
+Route::get('/booking', [UserBookingController::class,'index'])->name('booking');
+
+//route buat cart/keranjang
+Route::get('/keranjang', [UserCartController::class,'index'])->name('cart');
+
+
+//---------------------------------------------------------------------
+Route::resource('admin/room', AdminRoomController::class)->names('adminroom');
+Route::post('/admin/room', [AdminRoomController::class, 'store'])->name('adminroom.store');
+Route::get('/admin/room/{id}/gallery', [AdminRoomController::class, 'gallery'])->name('adminroom.gallery');
+Route::post('/admin/room', [AdminRoomController::class, 'store'])->name('adminroom.store');
+Route::get('/admin/room/{id}/edit', [AdminRoomController::class, 'edit'])->name('adminroom.edit');
+// Route::get('/admin/room/{id}', [AdminRoomController::class,'show'])->name('adminroom.show');
+
+// Route::get('/adminroom/create', 'AdminRoomController@create')->name('adminroom.create');
+// Route::post('/adminroom/store', 'AdminRoomController@store')->name('adminroom.store');
+// Route::get('/adminroom', 'AdminRoomController@index')->name('adminroom.index');
+
+
+
+
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

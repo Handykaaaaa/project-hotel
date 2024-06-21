@@ -1,0 +1,242 @@
+.bg-image {
+    background-image: url('image/kasur-landing.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    width: 100%; /* Membuat gambar latar belakang membentang penuh */
+    display: block; /* Pastikan elemen tersebut adalah block level */
+}
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+.booking-section h1, .booking-section h2 {
+    color: #333;
+}
+
+/* .booking-form h1 {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 25px;
+    color: #fff
+} */
+
+.booking-section p {
+    color: #666;
+}
+
+.booking-card {
+    background-color: #1D7C82;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.booking-form select, .booking-form input, .booking-form button {
+    padding: 10px;
+    margin-right: 50px;
+    margin-bottom: 15px;
+}
+
+.booking-form button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-selection {
+    width: 65%;
+}
+
+.room-selection h2 {
+    margin-top: 0;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.filter label {
+    margin-right: 615px;
+}
+
+.room-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.room-info {
+    display: flex;
+}
+
+.room-info img {
+    width: 300px;
+    height: 300px;
+    margin-right: 10px;
+}
+
+.room-info h3 {
+    margin: 0;
+}
+
+.room-info ul {
+    padding-left: 20px;
+}
+
+.room-price {
+    text-align: right;
+}
+
+.room-price p {
+    margin-right: 10px;
+    margin-top: 200px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.room-price button {
+    background-color: #2e8b57;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.summary {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary h2 {
+    margin-top: 0;
+}
+
+.summary p {
+    margin: 5px 0;
+}
+
+.continue-booking {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #2e8b57;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.footer {
+	background-color: #162034;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.name-hotel h1 {
+	color: white;
+	font-family: "Parisienne", cursive;
+	font-weight: bolder;
+	font-size: 28px;
+}
+
+.name-hotel p {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 21px;
+	color: #c7d2e8;
+	width: 299px;
+}
+.name-hotel span {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	color: #c7d2e8;
+	width: 299px;
+}
+.social-media h3 {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 21px;
+	color: #c7d2e8;
+}
+.navigation h3 {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	color: #c7d2e8;
+}
+
+.menu a {
+	text-decoration: none;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	color: #c1cbdd;
+	padding-top: 8px;
+}
+.recent-post h3 {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	color: #c7d2e8;
+}
+.title-contact-us {
+	font-weight: 500;
+	font-size: 300px;
+}
+.content-recent-post p {
+	color: #d2d9e8;
+	width: 157px;
+}
+.content-recent-post img {
+	width: 52px;
+	height: 52px;
+}
+.content-recent-post p {
+	font-family: Poppins;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 16.6px;
+	text-align: left;
+}
+
+.title-contact-us {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	color: #c7d2e8;
+}
+
+.contact-us h4 {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	color: #C1CBDD;
+	margin-top: 5px;
+}
+.contact-us h4 {
+	width: 269px;
+}
