@@ -10,6 +10,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -89,22 +90,22 @@
 
         /* (bagian header) */
         .header {
-    text-align: left; /* Mengatur teks agar rata kiri */
-    margin-top: 20px; /* Mengatur jarak margin atas sebesar 20px */
-    margin-bottom: 20px; /* Mengatur jarak margin bawah sebesar 20px */
-    padding-left: 10px; /* Menambahkan padding kiri sebesar 10px */
-    margin-left: 150px; /* Menetapkan margin kiri sebesar 100px */
-}
+            text-align: left; /* Mengatur teks agar rata kiri */
+            margin-top: 20px; /* Mengatur jarak margin atas sebesar 20px */
+            margin-bottom: 20px; /* Mengatur jarak margin bawah sebesar 20px */
+            padding-left: 10px; /* Menambahkan padding kiri sebesar 10px */
+            margin-left: 150px; /* Menetapkan margin kiri sebesar 100px */
+        }
 
-@media (max-width: 768px) {
-    .header {
-        transform: translateX(-100px); /* Geser elemen 50px ke kanan */
-    }
-}
+        @media (max-width: 768px) {
+        .header {
+            transform: translateX(-100px); /* Geser elemen 50px ke kanan */
+        }
+        }
 
-.header h2, .header p {
-    margin-left: 0; 
-}
+        .header h2, .header p {
+            margin-left: 0; 
+        }
 
         /* Modal */
         .modal {
@@ -120,17 +121,17 @@
         }
 
       /* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 70%; /* Perlebar modal sesuai preferensi Anda */
-    max-width: 600px; /* Tetapkan lebar maksimum yang lebih besar */
-    height: auto; /* Sesuaikan tinggi otomatis berdasarkan konten */
-    text-align: center; /* Center align text */
-}
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 70%; /* Perlebar modal sesuai preferensi Anda */
+            max-width: 600px; /* Tetapkan lebar maksimum yang lebih besar */
+            height: auto; /* Sesuaikan tinggi otomatis berdasarkan konten */
+            text-align: center; /* Center align text */
+        }
 
         /* Thank You Text */
         .modal-content h2 {
@@ -308,6 +309,7 @@
     </div>
 
     <!-- Modal -->
+    
     <div id="modal" class="modal">
         <div class="modal-content">
             
@@ -317,7 +319,7 @@
             <p style="font-size: 13px;">Terimaksih telah memilih hotel kami sebagai tempat menginap anda.</p>
 
             <h2 style="font-size: 16px;">Tunggu beberapa menit, kami akan segera mengirimkan konfirmasi pemesanan ke akun email anda.</h2>
-                 <div class="button-container">
+            <div class="button-container">
                 <button class="button" onclick="cancelBooking()">Batalkan Pemesanan</button>
                 <button class="button" onclick="checkBooking()">Cek Pemesanan</button>
             </div>
@@ -327,8 +329,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
    <script>
+    function cancelBooking() {
+        // Arahkan pengguna kembali ke halaman sebelumnya
+        window.history.back();
+    }
+
+    function checkBooking() {
+        // Arahkan pengguna ke halaman keranjang dan unduh PDF
+        window.location.href = '/cart/keranjang';
+        // Simulasi unduhan PDF setelah beberapa waktu untuk memastikan halaman dimuat
+        setTimeout(function() {
+            window.location.href = '/download-pdf-url'; // Ganti dengan URL yang tepat untuk mengunduh PDF
+        }, 1000); // Waktu tunda 1 detik
+    }
+
     const modal = document.getElementById("modal");
     const btn = document.getElementById("showModal");
     const span = document.getElementsByClassName("close-button")[0];

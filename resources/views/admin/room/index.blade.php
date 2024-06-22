@@ -48,6 +48,7 @@
                                         <th>Foto</th>
                                         <th>Nama Kamar</th>
                                         <th>Harga (per malam)</th>
+                                        <th>Fasilitas</th>
                                         <th class="text-right disabled-sorting">Aksi</th>
                                     </tr>
                                 </thead>
@@ -60,6 +61,18 @@
                                             </td>
                                             <td>{{ $item->name }}</td>
                                             <td class="font-weight-bold">{{ 'Rp ' . number_format($item->price, 2, ',', '.') }}</td>
+                                            <td>
+                                                <ul>
+                                                    @if ($item->facilities)
+                                                        @foreach ($item->facilities as $facility)
+                                                            <li>{{ $facility }}</li>
+                                                        @endforeach
+                                                    @else
+                                                        <li>No facilities available</li>
+                                                    @endif
+                                                </ul>
+                                                
+                                            </td>
                                             <td class="text-right">
                                                 <button class="btn btn-md text-light btn-warning" data-bs-toggle="modal" data-bs-target="#roomModal{{ $item->id }}">Lihat Detail</button>
                                                 <a href="{{ route('adminroom.gallery', $item->id) }}" class="btn btn-md text-light btn-success">Galeri</a>
@@ -73,7 +86,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
+                            </table>                            
                         </div>
                     </div>
                 </div>

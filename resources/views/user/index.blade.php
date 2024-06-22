@@ -55,7 +55,7 @@
         }
 
         .booking-form button {
-            background-color: #000000;
+            background-color: #ffffff;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -132,31 +132,47 @@
             cursor: pointer;
         }
 
-        .summary {
-            width: 30%;
-            padding: 20px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
+        .summary-item {
+            background-color: #f2f2f2;
+            border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 20px;
         }
 
-        .summary h2 {
-            margin-top: 0;
+        .summary-item h4 {
+            margin-top: 5px;
+            color: #162034;
         }
 
-        .summary p {
-            margin: 5px 0;
+        .summary-item label {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            color: #1d7c82;
         }
 
-        .continue-booking {
+        .summary-item input[type="text"] {
+            margin-bottom: 20px;
+        }
+
+        .summary-item .d-flex {
+            margin-bottom: 20px;
+        }
+
+        .btn-block {
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #2e8b57;
+            background-color: #162034;
             color: #fff;
             border: none;
+            border-radius: 0;
             cursor: pointer;
             text-align: center;
+        }
+
+        .btn-block:hover {
+            background-color: #007bff;
         }
 
         .footer {
@@ -281,123 +297,91 @@
                 <input type="date" class="check-in" value="2023-07-16">
                 <input type="date" class="check-out" value="2023-07-17">
                 <input type="text" class="promo-code" placeholder="Promo Code">
-                <button class="booking-button">BOOKING</button>
+                <a href="{{ route('user.booking.index') }}" class="booking-button">BOOKING</a>
+
             </div>
         </div>
         
-        <div class="main-content">
-            <div class="room-selection">
-                <h2>Pilih Kamar</h2>
-                <div class="filter">
-                    <label for="filter">Filter:</label>
-                    <select id="filter">
-                        <option value="termewah">Termewah</option>
-                        <option value="populer">Populer</option>
-                        <option value="termurah">Termurah</option>
-                    </select>
-                </div>
-                
-                <div class="room-card">
-                    <div class="room-info">
-                        <img src="room/tipe-kamar-hotel-suite.png" alt="Single Room">
-                        <div>
-                            <h3>Single Room</h3>
-                            <p>⭐⭐⭐⭐⭐ | Tersisa 1</p>
-                            <p>Fasilitas</p>
-                            <ul>
-                                <li>1 Kamar mandi</li>
-                                <li>1 Tempat tidur double</li>
-                                <li>Sarapan</li>
-                                <li>Kulkas mini</li>
-                                <li>TV</li>
-                            </ul>
+        <form action="{{ route('adminroom.show', ['room']) }}" method="POST">
+            @csrf
+            <div class="main-content">
+                <div class="room-selection">
+                    <h2>Pilih Kamar</h2>
+                    <div class="filter">
+                        <label for="filter">Filter:</label>
+                        <select id="filter" name="filter">
+                            <option value="termewah">Termewah</option>
+                            <option value="populer">Populer</option>
+                            <option value="termurah">Termurah</option>
+                        </select>
+                    </div>
+
+                    @foreach ($rooms as $room)
+                        <div class="room-card">
+                            <div class="room-info">
+                                <img src="{{ asset('storage/' . $room->image) }}" alt="{{ $room->name }}">
+                                <div>
+                                    <h3>{{ $room->name }}</h3>
+                                    <p>⭐⭐⭐⭐⭐ | Tersisa {{ $room->available_rooms }}</p>
+                                    <p>Fasilitas</p>
+                                    <ul>
+                                        @if ($room->facilities)
+                                            @foreach (json_decode($room->facilities) as $facility)
+                                                <li>{{ $facility }}</li>
+                                            @endforeach
+                                        @else
+                                            <li>Tidak ada fasilitas yang tersedia.</li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="room-price">
+                                <p>Rp {{ number_format($room->price, 2) }}/malam</p>
+                                <a href="{{ route('user.booking.index', $room->id) }}" class="book-room">Pesan Kamar</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="room-price">
-                        <p>Rp 350.000/malam</p>
-                        <button class="book-room">Pesan Kamar</button>
-                    </div>
-                </div>
-                
-                <div class="room-card">
-                    <div class="room-info">
-                        <img src="room/47-l.jpg" alt="Standard Room">
-                        <div>
-                            <h3>Standard Room</h3>
-                            <p>⭐⭐⭐⭐ | (735) Tersisa 3 kamar lagi</p>
-                            <p>Fasilitas</p>
-                            <ul>
-                                <li>2 Kamar mandi</li>
-                                <li>1 Tempat tidur double</li>
-                                <li>Sarapan</li>
-                                <li>Kulkas mini</li>
-                                <li>TV</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="room-price">
-                        <p>Rp 400.000/malam</p>
-                        <button class="book-room">Pesan Kamar</button>
-                    </div>
-                </div>
-                <div class="room-card">
-                    <div class="room-info">
-                        <img src="room/52a2e4d2539c.jpg" alt="Standard Room">
-                        <div>
-                            <h3>Standard Room</h3>
-                            <p>⭐⭐⭐⭐ | (735) Tersisa 3 kamar lagi</p>
-                            <p>Fasilitas</p>
-                            <ul>
-                                <li>2 Kamar mandi</li>
-                                <li>1 Tempat tidur double</li>
-                                <li>Sarapan</li>
-                                <li>Kulkas mini</li>
-                                <li>TV</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="room-price">
-                        <p>Rp 400.000/malam</p>
-                        <button class="book-room">Pesan Kamar</button>
-                    </div>
-                </div>
-                <div class="room-card">
-                    <div class="room-info">
-                        <img src="room/royal-tulip-gunung-geulis.jpg" alt="Standard Room">
-                        <div>
-                            <h3>Standard Room</h3>
-                            <p>⭐⭐⭐⭐ | (735) Tersisa 3 kamar lagi</p>
-                            <p>Fasilitas</p>
-                            <ul>
-                                <li>2 Kamar mandi</li>
-                                <li>1 Tempat tidur double</li>
-                                <li>Sarapan</li>
-                                <li>Kulkas mini</li>
-                                <li>TV</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="room-price">
-                        <p>Rp 400.000/malam</p>
-                        <button class="book-room">Pesan Kamar</button>
-                    </div>
+                    @endforeach
+                    <!-- Bagian lain dari room-card ... -->
+        
                 </div>
             </div>
+        </form>
             
-            <div class="summary">
-                <h2>Ringkasan Pemesanan</h2>
-                <p>Check In</p>
-                <p>Minggu, 20.00 - 16 July 2023</p>
-                <p>Check Out</p>
-                <p>Senin, 20.00 - 17 July 2023</p>
-                <p>Kamar</p>
-                <p>Superior Room</p>
-                <p>1 malam</p>
-                <p>Rp 400.000</p>
-                <p>Jumlah Kamar: 1</p>
-                <p>Total: Rp 400.000</p>
-                <button class="continue-booking">Lanjutkan Pemesanan</button>
+        <div class="col-md-4" style="margin-top: 0px;">
+            <div class="summary-item">
+                <h4>Ringkasan Pemesanan</h4>
+                <label for="check-in">
+                    <strong>Check In</strong>
+                </label>
+                <input type="text" id="check-in" class="form-control">
+          
+                <label for="check-out">
+                    <strong>Check Out</strong>
+                </label>
+                <input type="text" id="check-out" class="form-control">
+        
+                <label for="hotel">
+                    <strong>Hotel</strong>
+                </label>
+                <input type="text" id="hotel" class="form-control">
+                
+                <div class="d-flex justify-content-between">
+                    <div><strong>1 malam</strong></div>
+                    <div id="price-per-night">Rp. 400.000</div>
+                </div>
+              
+                <div class="d-flex justify-content-between">
+                    <div><strong>Jumlah Orang</strong></div>
+                    <div>2 Dewasa</div>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                    <div><strong>Total</strong></div>
+                    <div id="total-cost">Rp 700.000</div>
+                </div>
             </div>
+            <button type="button" id="showModal" class="btn btn-primary btn-block" style="margin-top:20px;">BOOKING</button>
+        </div>
         </div>
     </div>
 </section>

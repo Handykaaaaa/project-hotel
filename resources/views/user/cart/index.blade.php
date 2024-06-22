@@ -110,7 +110,8 @@
                     <div class="total-payment ms-auto">
                         <h3 class="title-total-payment">Total Pembayaran</h3>
                         <h3 class="amount">Rp.400.000</h3>
-                        <button class="button-cancel-order ">Batalkan Pemesanan</button>
+                        <button class="button-cancel-order" onclick="cancelBooking()">Batalkan Pemesanan</button>
+                        <button class="button-download-pdf" onclick="downloadPDF()">Unduh PDF</button>
                         <h6 class="pt-2">Sebelum <span>04 : 24 : 12</span></h6>
                     </div>
                 </div>
@@ -192,6 +193,21 @@
             </div>
         </div>
     </section>
+    <script>
+        function cancelBooking() {
+            // Arahkan pengguna kembali ke halaman sebelumnya
+            window.history.back();
+        }
+    
+        function downloadPDF() {
+            // Arahkan pengguna ke halaman keranjang dan unduh PDF
+            window.location.href = '/cart/keranjang';
+            // Simulasi unduhan PDF setelah beberapa waktu untuk memastikan halaman dimuat
+            setTimeout(function() {
+                window.location.href = '/download-pdf-url'; // Ganti dengan URL yang tepat untuk mengunduh PDF
+            }, 1000); // Waktu tunda 1 detik
+        }
+    </script>
 </body>
 
 </html>

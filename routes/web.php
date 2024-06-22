@@ -46,18 +46,22 @@ Route::get('/detail/{id}', 'UserRoomDetailController@detail')->name('room.detail
 
 //route buat booking
 Route::get('/booking', [UserBookingController::class,'index'])->name('booking');
+Route::get('user/booking/index', [UserBookingController::class, 'index'])->name('user.booking.index');
 
 //route buat cart/keranjang
 Route::get('/keranjang', [UserCartController::class,'index'])->name('cart');
 
 
+
 //---------------------------------------------------------------------
-Route::resource('admin/room', AdminRoomController::class)->names('adminroom');
+Route::get('/adminroom', [AdminRoomController::class, 'index'])->name('adminroom.index');
+Route::get('/adminroom/create', [AdminRoomController::class, 'create'])->name('adminroom.create');
 Route::post('/admin/room', [AdminRoomController::class, 'store'])->name('adminroom.store');
 Route::get('/admin/room/{id}/gallery', [AdminRoomController::class, 'gallery'])->name('adminroom.gallery');
 Route::post('/admin/room', [AdminRoomController::class, 'store'])->name('adminroom.store');
-Route::get('/admin/room/{id}/edit', [AdminRoomController::class, 'edit'])->name('adminroom.edit');
-// Route::get('/admin/room/{id}', [AdminRoomController::class,'show'])->name('adminroom.show');
+Route::get('/admin/room/edit', [AdminRoomController::class, 'edit'])->name('adminroom.edit');
+Route::patch('/admin/room/', [AdminRoomController::class, 'update'])->name('adminroom.update'); 
+Route::get('/admin/room/', [AdminRoomController::class,'show'])->name('adminroom.show');
 
 // Route::get('/adminroom/create', 'AdminRoomController@create')->name('adminroom.create');
 // Route::post('/adminroom/store', 'AdminRoomController@store')->name('adminroom.store');

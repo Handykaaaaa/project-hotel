@@ -1,9 +1,9 @@
-<x-app-layout>
+{{-- <x-app-layout>
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('selamat datang di Admin Dashboard') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,4 +68,4 @@
     </footer> --}}
 </body>
 </html>
-</x-app-layout>
+{{-- </x-app-layout> --}}

@@ -17,7 +17,6 @@ class AdminRoomController extends Controller
         return view('admin.room.index', compact('rooms'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -70,10 +69,9 @@ class AdminRoomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Room $rooms)
     {
-        $room = Room::findOrFail($id);
-        return view('user.detail.index', compact('room'));
+        return view('admin.room.show', ['room' => $rooms]);
     }
 
     /**

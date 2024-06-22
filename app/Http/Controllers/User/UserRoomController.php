@@ -14,7 +14,8 @@ class UserRoomController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        $rooms = Room::all();
+        return view('user.index', compact('rooms'));
     }
 
     
@@ -38,10 +39,9 @@ class UserRoomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Room $rooms)
     {
-        $room = Room::findOrFail($id);
-        return view('user.detail.index', compact('detail'));
+        return view('admin.room.show', ['room' => $rooms]);
     }
 
     /**
