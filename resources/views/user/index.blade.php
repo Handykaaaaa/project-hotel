@@ -1,491 +1,895 @@
-<x-app-layout>
-
-{{-- @section('content') --}}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Citra Megah</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Citra Megah - Kamar</title>
+    <link href="fonts/ananda-black-font/AnandaBlackPersonalUseRegular-rg9Rx.ttf" rel="stylesheet"/>
+    <link href="https://fonts.google.com/specimen/Poppins" rel="stylesheet"/>
     <style>
-        .bg-image {
-            background-image: url('image/kasur-landing.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 400px;
-            width: 100%; /* Membuat gambar latar belakang membentang penuh */
-            display: block; /* Pastikan elemen tersebut adalah block level */
-        }
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 20px;
-            
-        }
+        /* Import Google Fonts */
+@font-face {
+  font-family: "Ananda Black";
+  src: url("fonts/ananda-black-font/AnandaBlackPersonalUseRegular-rg9Rx.ttf");
+}
 
-        .booking-section h1, .booking-section h2 {
-            color: #333;
-        }
+@font-face {
+  font-family: "Poppins";
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+}
 
-        /* .booking-form h1 {
-            padding: 15px;
-            font-weight: bold;
-            font-size: 25px;
-            color: #fff
-        } */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        .booking-section p {
-            color: #666;
-        }
+/* Header styles */
+header {
+  background-color: #fff;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .booking-card {
-            background-color: #168895;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
 
-        .booking-form select, .booking-form input, .booking-form button {
-            padding: 10px;
-            margin-right: 50px;
-            margin-bottom: 15px;
-        }
+.logo {
+  flex: 1;
+}
 
-        .booking-form button {
-            background-color: #000000;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
+.logo h1 {
+  font-family: "Ananda Black", serif;
+  font-size: 24px;
+  margin: 0;
+}
 
-        .main-content {
-            display: flex;
-            justify-content: space-between;
-        }
+nav {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
 
-        .room-selection {
-            width: 65%;
-        }
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
 
-        .room-selection h2 {
-            margin-top: 0;
-        }
+.user {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.user:hover .dropdown-content {
+  display: block;
+}
 
-        .filter {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            text-align: left;
-        }
+nav ul li {
+  margin-left: 20px;
+}
 
-        .filter label {
-            margin-right: 615px;
-        }
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
 
-        .room-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            border: 1px solid #ddd;
-            margin-bottom: 10px;
-            background-color: #f9f9f9;
-        }
+.user {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
-        .room-info {
-            display: flex;
-        }
+.user span {
+  margin-right: 10px;
+}
 
-        .room-info img {
-            width: 300px;
-            height: 300px;
-            margin-right: 10px;
-        }
+.user .logout {
+  color: #e74c3c;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: 1px solid #e74c3c;
+  border-radius: 5px;
+}
 
-        .room-info h3 {
-            margin: 0;
-        }
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  color: white;
+}
 
-        .room-info ul {
-            padding-left: 20px;
-        }
+.hero .hero-image {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+}
 
-        .room-price {
-            text-align: right;
-        }
+.hero .hero-text {
+  position: absolute;
+  bottom: 45px;
+  left: 10%;
+  transform: translateX(-50%);
+  background-color: rgb(22, 32, 52);
+  padding: 40px;
+  border-radius: 5px 5px 0 0;
+}
 
-        .room-price p {
-            margin-right: 10px;
-            margin-top: 200px;
-            font-size: 18px;
-            font-weight: bold;
-        }
+.hero h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  margin: 0;
+}
 
-        .room-price button {
-            background-color: #2e8b57;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
+/* General Section */
+.general {
+  padding: 20px;
+}
 
-        .summary {
-            width: 30%;
-            padding: 20px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+.general .definition {
+  padding: 20px;
+}
 
-        .summary h2 {
-            margin-top: 0;
-        }
+.general h2 {
+  font-size: 28px;
+}
 
-        .summary p {
-            margin: 5px 0;
-        }
+.general p {
+  font-size: 16px;
+  color: #555;
+}
 
-        .continue-booking {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #2e8b57;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
+/* Booking Form Section */
+.booking-form .container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #1d7c82;
+  border-radius: 20px;
+  gap: 20px;
+}
+.booking-form .container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #1d7c82;
+  border-radius: 20px;
+  gap: 20px;
+  width: 100%; /* Ensure container width is 100% */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
 
-        .footer {
-            background-color: #162034;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
+.booking-form .item-container {
+  flex: 1 1 200px; /* Adjust flex properties for responsiveness */
+  margin: 10px;
+  max-width: 100%; /* Ensure the items do not exceed the container width */
+}
 
-        .name-hotel h1 {
-            color: white;
-            font-family: "Parisienne", cursive;
-            font-weight: bolder;
-            font-size: 28px;
-        }
+.booking-form select,
+.booking-form input[type="date"],
+.booking-form input[type="text"],
+.booking-form button {
+  width: 100%; /* Ensure form elements take 100% width of their parent */
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: none;
+}
 
-        .name-hotel p {
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 21px;
-            color: #c7d2e8;
-            width: 299px;
-        }
-        .name-hotel span {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 21px;
-            color: #c7d2e8;
-            width: 299px;
-        }
-        .social-media h3 {
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 21px;
-            color: #c7d2e8;
-        }
-        .navigation h3 {
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 30px;
-            color: #c7d2e8;
-        }
+.booking-form button {
+  background-color: rgba(22, 32, 52, 0.8);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
-        .menu a {
-            text-decoration: none;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 21px;
-            color: #c1cbdd;
-            padding-top: 8px;
-        }
-        .recent-post h3 {
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 30px;
-            color: #c7d2e8;
-        }
-        .title-contact-us {
-            font-weight: 500;
-            font-size: 300px;
-        }
-        .content-recent-post p {
-            color: #d2d9e8;
-            width: 157px;
-        }
-        .content-recent-post img {
-            width: 52px;
-            height: 52px;
-        }
-        .content-recent-post p {
-            font-family: Poppins;
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 16.6px;
-            text-align: left;
-        }
+.booking-form button:hover {
+  background-color: #c0392b;
+}
 
-        .title-contact-us {
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 30px;
-            color: #c7d2e8;
-        }
+/* Room Selection Section */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative; 
+}
 
-        .contact-us h4 {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 21px;
-            color: #C1CBDD;
-            margin-top: 5px;
-        }
-        .contact-us h4 {
-            width: 269px;
-        }
+.room-selection {
+  margin-bottom: 20px;
+}
 
+.room-selection h2 {
+  font-size: 24px;
+  margin-top: 10px;
+}
 
+.filter {
+  display: flex;
+  align-items: center;
+  position: absolute; 
+  top: 20px; 
+  right: 390px; 
+  background: #1d7c82; 
+  padding: 10px; 
+  border-radius: 5px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+.filter label {
+  margin-right: 10px;
+}
+
+.filter select {
+  padding: 5px;
+  border: none;
+  background: #1d7c82;
+}
+
+/* Room selection and booking summary styles */
+
+.container {
+  display: flex;
+}
+
+.rooms {
+  flex: 1; /* Let it grow to fill available space */
+  background-color: #f2f2f2;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box; /* Ensure padding and borders are included in the width */
+  margin-bottom: 20px; /* Adjust margin to create space between items */
+  margin-top: 30px;
+}
+
+.room {
+  display: flex;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.booking-summary {
+  flex: 1; /* Let it grow to fill available space */
+  background-color: #f2f2f2;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box; /* Ensure padding and borders are included in the width */
+  margin-bottom: 20px; /* Adjust margin to create space between items */
+  margin-top: 65px;
+}
+.choose-room {
+  width: 70%;
+  margin-right: 10px;
+}
+.payment {
+  width: 30%;
+}
+
+.check-in-out {
+  margin-bottom: 20px;
+}
+
+.check-in-out label {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.check-in-out input[type="date"] {
+  width: calc(100% - 20px); /* Lebar input dikurangi padding */
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.summary-details {
+  margin-top: 20px;
+}
+
+.summary-details p {
+  margin-bottom: 10px;
+}
+
+.summary-details hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.summary-details span {
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 0px;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background-color: #333;
+  margin: 20px 0;
+}
+
+.room-info .price-and-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.room-info-pilih .price-and-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.room img {
+  width: 350px;
+  height: auto;
+  margin-right: 30px;
+}
+
+.room-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.room-info-pilih {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.room-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.room-info-pilih {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.room-info h3,
+.room-info button {
+  margin: 10px; /* Provides a space between items */
+}
+
+.room-info-pilih h3,
+.room-info-pilih button {
+  margin: 10px; /* Provides a space between items */
+}
+
+.room-info ul {
+  list-style: disc;
+  padding: 0;
+  margin: 0 0 0 20px;
+  column-count: 2;
+  column-gap: 20px;
+}
+
+.room-info ul li {
+  margin-bottom: 5px;
+}
+
+.room-info h3 span {
+  opacity: 0.7;
+  font-size: 15px;
+  font-weight: 400;
+  color: #1d7c82;
+}
+
+.room-info button {
+  align-self: flex-end; /* Aligns button to the end (right) */
+  padding: 10px 20px; /* Adjust padding for button */
+  background-color: rgba(22, 32, 52, 0.8); /* Example background color */
+  color: white; /* Example text color */
+  border: none;
+  cursor: pointer;
+}
+
+.room-info-pilih button {
+  align-self: flex-end; /* Aligns button to the end (right) */
+  padding: 10px 20px; /* Adjust padding for button */
+  background-color: #1d7c82; /* Example background color */
+  color: white; /* Example text color */
+  border: none;
+  cursor: pointer;
+}
+
+.room-info button:hover {
+  background-color: #0056b3;
+}
+
+.booking-summary h2 {
+  margin-top: 0;
+}
+
+.check-in-out {
+  margin-bottom: 20px;
+}
+
+.check-in-out label {
+  display: block;
+  font-weight: bold;
+}
+
+.summary-details {
+  margin-bottom: 20px;
+}
+
+.summary-details {
+  margin-bottom: 50px;
+}
+
+.summary-details p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-details hr {
+  border: 0;
+  height: 2px;
+  background-color: #333;
+  margin: 0px 0;
+}
+
+.summary-details span {
+  font-weight: bold;
+}
+
+.booking-summary button {
+  padding: 10px 20px;
+  background-color: rgba(20, 32, 56, 0.8);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.booking-summary button:hover {
+  background-color: rgba(22, 32, 52, 0.8);
+}
+
+/* Footer styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+footer {
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.container {
+  display: flex;
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.footer-section h2{
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: "Ananda Black";
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #C1CBDD;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: #C1CBDD;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.social-icons a {
+  margin-right: 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  color: #C1CBDD;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hero .hero-text {
+    padding: 20px;
+    font-size: 20px;
+  }
+
+  .general .definition {
+    padding: 10px;
+  }
+
+  .booking-form .container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .booking-form .item-container {
+    margin: 5px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .room-selection,
+  .filter {
+    flex: 1 1 100%;
+    margin-bottom: 10px;
+  }
+
+  .rooms {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .booking-summary {
+    width: 100%;
+  }
+
+  .room img {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .room-info {
+    width: 100%;
+  }
+}
 
     </style>
-</head>
-<body>
-    <section class="bg-image">
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>Hotel Citra Megah</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="user">
+          <span>Robert Evelyn</span>
+          <div class="dropdown-content">
+            <a href="#profile">Profile</a>
+            <a href="#logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <img src="gambar/kamra awal.jpeg" alt="Hero Image" class="hero-image" />
         <div class="container">
-            <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
+          <div class="hero-text">
+            <h2>Kamar</h2>
+          </div>
+        </div>
+      </section>
+      <section class="container">
+        <div class="definition">
+          <h2>Ruangan Hotel Citra Megah</h2>
+          <p>
+            Citra Megah menyediakan beberapa ruangan yang tentunya sangat cocok
+            dengan selara anda, dengan tampilan, kualitas dan fasilitas yang
+            sangat terjamin untuk menunjang berbgai kebutuhan sehari hari anda,
+            dan kami siap 24 jam melayani anda jika membutuhkan bantuan apapun,
+            ayo segera pesan kamar di bawah ini dan dapatkan diskonnya di
+            pemesanan pertama anda!
+          </p>
+        </div>
+      </section>
+
+      <section class="booking-form">
+        <div class="container">
+          <div class="item-container">
+            <div class="room-selection-booking">
+              <select id="room-type">
+                <option value="standard">Standard Room</option>
+                <option value="superior">Superior Room</option>
+                <option value="twin">Twin Room</option>
+              </select>
             </div>
-    </div>
-    </section>
-<br>
-<br>
-<section class="booking-section">
+          </div>
+          <div class="item-container">
+            <div class="date-selection">
+              <input type="date" id="check-in" />
+            </div>
+          </div>
+          <div class="item-container">
+            <div class="date-selection">
+              <input type="date" id="check-out" />
+            </div>
+          </div>
+          <div class="item-container">
+            <div class="booking-code">
+              <input type="text" id="booking-code" placeholder="Kode Promo" />
+            </div>
+          </div>
+          <div class="item-container">
+            <button class="book-now">BOOKING</button>
+          </div>
+        </div>
+      </section>
+    </main>
     <div class="container">
-        <h1>Ruangan Hotel Citra Megah</h1>
-        <p>Hotel Citra Megah menyediakan beberapa ruangan yang tentunya sangat cocok dengan selera anda, dengan tampilan, kualitas dan fasilitas yang sangat terjamin untuk menunjang berbagai kebutuhan sehari hari anda, dan kami siap 24 jam melayani anda jika membutuhkan bantuan apapun, ayo segera pesan kamar di bawah ini dan dapatkan diskonnya di pemesanan pertama anda!</p>
-        <br>
-        <br>
-        <div class="booking-card">
-            <div class="booking-form">
-                {{-- <h1>Booking Sekarang!!</h1> --}}
-                <select class="room-type">
-                    <option value="superior">Superior Room</option>
-                    <!-- Add other room types here -->
-                </select>
-                <input type="date" class="check-in" value="2023-07-16">
-                <input type="date" class="check-out" value="2023-07-17">
-                <input type="text" class="promo-code" placeholder="Promo Code">
-                <button class="booking-button">BOOKING</button>
-            </div>
+      <div class="choose-room">
+        <div class="room-selection">
+          <h2>Pilih Kamar</h2>
         </div>
-        
-        <div class="main-content">
-            <div class="room-selection">
-                <h2>Pilih Kamar</h2>
-                <div class="filter">
-                    <label for="filter">Filter:</label>
-                    <select id="filter">
-                        <option value="termewah">Termewah</option>
-                        <option value="populer">Populer</option>
-                        <option value="termurah">Termurah</option>
-                    </select>
-                </div>
-                
-                <div class="room-card">
-                    <div class="room-info">
-                        <img src="room/tipe-kamar-hotel-suite.png" alt="Single Room">
-                        <div>
-                            <h3>Single Room</h3>
-                            <p>⭐⭐⭐⭐⭐ | Tersisa 1</p>
-                            <p>Fasilitas</p>
-                            <ul>
-                                <li>1 Kamar mandi</li>
-                                <li>1 Tempat tidur double</li>
-                                <li>Sarapan</li>
-                                <li>Kulkas mini</li>
-                                <li>TV</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="room-price">
-                        <p>Rp 350.000/malam</p>
-                        <button class="book-room">Pesan Kamar</button>
-                    </div>
-                </div>
-                
-                <div class="room-card">
-                    <div class="room-info">
-                        <img src="room/47-l.jpg" alt="Standard Room">
-                        <div>
-                            <h3>Standard Room</h3>
-                            <p>⭐⭐⭐⭐ | (735) Tersisa 3 kamar lagi</p>
-                            <p>Fasilitas</p>
-                            <ul>
-                                <li>2 Kamar mandi</li>
-                                <li>1 Tempat tidur double</li>
-                                <li>Sarapan</li>
-                                <li>Kulkas mini</li>
-                                <li>TV</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="room-price">
-                        <p>Rp 400.000/malam</p>
-                        <button class="book-room">Pesan Kamar</button>
-                    </div>
-                </div>
-                <div class="room-card">
-                    <div class="room-info">
-                        <img src="room/52a2e4d2539c.jpg" alt="Standard Room">
-                        <div>
-                            <h3>Standard Room</h3>
-                            <p>⭐⭐⭐⭐ | (735) Tersisa 3 kamar lagi</p>
-                            <p>Fasilitas</p>
-                            <ul>
-                                <li>2 Kamar mandi</li>
-                                <li>1 Tempat tidur double</li>
-                                <li>Sarapan</li>
-                                <li>Kulkas mini</li>
-                                <li>TV</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="room-price">
-                        <p>Rp 400.000/malam</p>
-                        <button class="book-room">Pesan Kamar</button>
-                    </div>
-                </div>
-                <div class="room-card">
-                    <div class="room-info">
-                        <img src="room/royal-tulip-gunung-geulis.jpg" alt="Standard Room">
-                        <div>
-                            <h3>Standard Room</h3>
-                            <p>⭐⭐⭐⭐ | (735) Tersisa 3 kamar lagi</p>
-                            <p>Fasilitas</p>
-                            <ul>
-                                <li>2 Kamar mandi</li>
-                                <li>1 Tempat tidur double</li>
-                                <li>Sarapan</li>
-                                <li>Kulkas mini</li>
-                                <li>TV</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="room-price">
-                        <p>Rp 400.000/malam</p>
-                        <button class="book-room">Pesan Kamar</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="summary">
-                <h2>Ringkasan Pemesanan</h2>
-                <p>Check In</p>
-                <p>Minggu, 20.00 - 16 July 2023</p>
-                <p>Check Out</p>
-                <p>Senin, 20.00 - 17 July 2023</p>
-                <p>Kamar</p>
-                <p>Superior Room</p>
-                <p>1 malam</p>
-                <p>Rp 400.000</p>
-                <p>Jumlah Kamar: 1</p>
-                <p>Total: Rp 400.000</p>
-                <button class="continue-booking">Lanjutkan Pemesanan</button>
-            </div>
+        <div class="filter">
+          <label for="filter">Filter:</label>
+          <select id="filter">
+            <option value="termurah">Termurah</option>
+            <option value="termurah">Populer</option>
+            <option value="termahal">Termahal</option>
+          </select>
         </div>
+
+        <div class="rooms">
+          <div class="room" id="single-room">
+            <img src="gambar/single room.jpeg" alt="Single Room" />
+            <div class="room-info">
+              <h2>Single Room</h2>
+              <p>⭐️⭐️⭐️⭐️⭐️ (735)</p>
+
+              <ul>
+                <li>1 Kamar mandi</li>
+                <li>1 Tempat tidur double</li>
+                <li>Sarapan</li>
+                <li>High speed wifi</li>
+                <li>Kulkas mini</li>
+                <li>TV</li>
+              </ul>
+              <div class="price-and-button">
+                <h3>Rp 350.000 <span>/malam</span></h3>
+                <button>Pesan Kamar</button>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="room" id="standard-room">
+            <img src="gambar/standard room.jpeg" alt="Standard Room" />
+            <div class="room-info">
+              <h2>Standard Room</h2>
+              <p>⭐️⭐️⭐️⭐️⭐️ (735)</p>
+
+              <ul>
+                <li>1 Kamar mandi</li>
+                <li>1 Tempat tidur double</li>
+                <li>Sarapan</li>
+                <li>High speed wifi</li>
+                <li>Kulkas mini</li>
+                <li>TV</li>
+              </ul>
+              <div class="price-and-button">
+                <h3>Rp 400.000 <span>/malam</span></h3>
+                <button>Pesan Kamar</button>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="room" id="superior-room">
+            <img src="gambar/superior room.jpeg" alt="Superior Room" />
+            <div class="room-info-pilih">
+              <h2>Superior Room</h2>
+              <p>⭐️⭐️⭐️⭐️⭐️ (735)</p>
+
+              <ul>
+                <li>1 Kamar mandi</li>
+                <li>1 Tempat tidur double</li>
+                <li>Sarapan</li>
+                <li>High speed wifi</li>
+                <li>Kulkas mini</li>
+                <li>TV</li>
+              </ul>
+              <div class="price-and-button">
+                <h3>Rp 600.000<span>/malam</span></h3>
+                <button>Dipilih</button>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="room" id="deluxe-twin-bed">
+            <img src="gambar/deluxe twin bed.jpeg" alt="Deluxe Twin Bed" />
+            <div class="room-info">
+              <h2>Deluxe Twin Bed</h2>
+              <p>⭐️⭐️⭐️⭐️⭐️ (735)</p>
+              <ul>
+                <li>1 Kamar mandi</li>
+                <li>2 Tempat tidur</li>
+                <li>Sarapan</li>
+                <li>High speed wifi</li>
+                <li>Kulkas mini</li>
+                <li>TV</li>
+              </ul>
+              <div class="price-and-button">
+                <h3>Rp 800.000 <span>/malam</span></h3>
+                <button>Pesan Kamar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment">
+        <div class="booking-summary">
+          <h2>Ringkasan Pemesanan</h2>
+          <div class="check-in-out">
+            <label><i class="far fa-calendar-alt"></i> Check In</label>
+            <input type="date" value="2023-07-16" />
+            <!-- Input date untuk Check In -->
+            <label><i class="far fa-calendar-alt"></i> Check Out</label>
+            <input type="date" value="2023-07-17" />
+            <!-- Input date untuk Check Out -->
+          </div>
+          <div class="summary-details">
+            <br>Kamar: <br> <br> <span>Superior Room</span> </br></p>
+            <hr />
+            <!-- Garis horizontal setelah jenis kamar -->
+            <p>1 malam <span>Rp 600.000</span></p>
+            <p>Jumlah kamar: <span>1 Kamar</span></p>
+            <hr />
+            <!-- Garis horizontal sebelum total -->
+            <p>Total: <span>Rp 600.000</span></p>
+          </div>
+          <button>Lanjutkan Pemesanan</button>
+        </div>
+      </div>
     </div>
-</section>
 
-<section>
-    <div class="footer ">
-        <div class="container">
-            <div class="content-footer d-flex gap-5">
-                <div class="name-hotel">
-                    <h1>Hotel Citra Megah</h1>
-                    <p>Hotel Citra Megah, <span>hotel bintang lima terbaik di indonesia dengan lokasi yg
-                            strategis</span> </p>
-                    <div class="social-media mt-5">
-                        <h3>Follow Us</h3>
-                        <div class="icon-social-media">
-                            <a href="">
-                                <img src="{{ asset('image/social-media/facebook.png') }}" alt="">
-    
-                            </a>
-                            <a href="">
-                                <img class="ms-2" src="{{ asset('image/social-media/linkedin.png') }}" alt="">
-    
-                            </a>
-                            <a href="">
-                                <img class="ms-2" src="{{ asset('image/social-media/instagram.png') }}"
-                                    alt="">
-    
-                            </a>
-                            <a href="">
-                                <img class="ms-2" src="{{ asset('image/social-media/twitter.png') }}" alt="">
-    
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="navigation ">
-                    <h3>Navigation</h3>
-                    <div class="menu d-flex flex-column">
-                        <a href="#">Helper Center</a>
-                        <a href="#">Careers</a>
-                        <a href="#">Terms & Conditions</a>
-                        <a href="#">Privacy Policy</a>
-                    </div>
-                </div>
-                <div class="recent-post ">
-                    <h3>Recent Post</h3>
-                    <div class="content-recent-post">
-                        <div class=" d-flex  gap-3">
-                            <img src="{{ asset('image/gambar2.png') }}" alt="">
-                            <p>Menemukan Kesempurnaan dalam Kesenangan Mengin . . .</p>
-                        </div>
-                        <div class=" d-flex  gap-3">
-                            <img src="{{ asset('image/gambar4.png') }}" alt="">
-                            <p>Mengenal Dapur Lezat Hotel Citra Megah: Sebuah Petualangan . . .</p>
-                        </div>
-                        <div class=" d-flex  gap-3">
-                            <img src="{{ asset('image/gambar3.png') }}" alt="">
-                            <p>Menjadi Tuan Rumah yang Tepat: Konferensi dan Acara Bisnis di . . .</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-us">
-                    <h3 class="title-contact-us">Contact Us</h3>
-                    <div class=" d-flex gap-3 align-items-center">
-                        <img src="{{ asset('image/contact/phone.png') }}" alt="">
-                        <h4>1234-567-890</h4>
-                    </div>
-                    <div class=" d-flex gap-3 align-items-center mt-3">
-                        <img src="{{ asset('image/contact/email.png') }}" alt="">
-                        <h4>hotelcitramegah@gmail.com</h4>
-                    </div>
-                    <div class=" d-flex gap-3 align-items-center mt-3">
-                        <img src="{{ asset('image/contact/maps.png') }}" alt="">
-                        <h4>jl. Raya Krapyak, Jl. Karanganyar Raya No.RT.05, Karanganyar, Wedomartani, Kec.
-                            Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584</h4>
-                    </div>
-                </div>
-            </div>
+    <footer>
+      <div class="container">
+        <div class="footer-section">
+          <h2>Hotel Citra Megah</h2>
+          <p>
+            Hotel Citra Megah, hotel bintang lima terbaik di Indonesia dengan
+            lokasi yg strategis
+          </p>
+          <p>Follow Us</p>
+          <div class="social-icons">
+            <a href="#"><img src="facebook-icon.png" alt="Facebook" /></a>
+            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn" /></a>
+            <a href="#"><img src="instagram-icon.png" alt="Instagram" /></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter" /></a>
+          </div>
         </div>
-    </div>
-</section>
-
-
-    
-</body>
+        <div class="footer-section">
+          <h3>Navigation</h3>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Recent Post</h3>
+          <ul>
+            <li>
+              <a href="#">Menemukan Kesempurnaan dalam Kesenangan Mengin...</a>
+            </li>
+            <li>
+              <a href="#"
+                >Menjadi Tuan Rumah yang Tepat: Konferensi dan Acara Bisnis
+                di...</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >Mengenal Dapur Lezat Hotel Citra Megah: Sebuah
+                Petualangan...</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p><img src="phone-icon.png" alt="Phone" /> 1234-567-890</p>
+          <p>
+            <img src="email-icon.png" alt="Email" /> hotelcitramegah@gmail.com
+          </p>
+          <p>
+            <img src="location-icon.png" alt="Location" /> jl. Raya Krapyak, jl.
+            Karanganyar Raya No.RT.05, Karanganyar, Wedomartani, Kec. Ngemplak,
+            Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2023 Hotel Citra Megah</p>
+      </div>
+    </footer>
+  </body>
 </html>
-{{-- @endsection --}}
-</x-app-layout>
-
-
-
