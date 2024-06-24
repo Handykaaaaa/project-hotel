@@ -21,7 +21,7 @@ class HomeController extends Controller
 
             else if($usertype=='admin')
             {
-                return view('admin.adminhome');
+                return redirect('show_room');
             }
 
             else 
