@@ -21,7 +21,7 @@ class TypeRoomController extends Controller
      */
     public function create()
     {
-        return view('admin.room.create');
+        return view('admin.type.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class TypeRoomController extends Controller
     public function edit(string $id)
     {
         $data = Type::find($id);
-        return view('admin.room.update', compact('data'));
+        return view('admin.type.update', compact('data'));
     }
 
     /**
@@ -115,6 +115,6 @@ class TypeRoomController extends Controller
     {
         $data = Type::all();
 
-        return view('admin.room.index', compact('data'));
+        return view('admin.type.index', compact('data'));
     }
 }

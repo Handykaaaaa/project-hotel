@@ -319,24 +319,36 @@
                     @foreach ($rooms as $room)
                         <div class="room-card">
                             <div class="room-info">
-                                <img src="{{ asset('storage/' . $room->image) }}" alt="{{ $room->name }}">
+                                <img src="{{ asset('storage/' . $room->image) }}" alt="{{ $room->featured_photo }}">
                                 <div>
-                                    <h3>{{ $room->name }}</h3>
+                                    <h3>{{ $room->room_type }}</h3>
                                     <p>⭐⭐⭐⭐⭐ | Tersisa {{ $room->available_rooms }}</p>
                                     <p>Fasilitas</p>
-                                    <ul>
-                                        @if ($room->facilities)
-                                            @foreach (json_decode($room->facilities) as $facility)
-                                                <li>{{ $facility }}</li>
+                                    <td class="w-25 p-3 text-sm font-semibold text-gray-700 whitespace-nowrap">
+                                        <div class="flex flex-col">
+                                            @php
+                                                $facilities = explode(', ', $room->facility);
+                                            @endphp
+                                            @foreach ($facilities as $index => $facility)
+                                                @if ($index % 2 == 0)
+                                                    <div class="flex">
+                                                @endif
+                                                <div class="flex-1 relative pl-5">
+                                                    <span class="absolute left-0">&bull;</span>{{ $facility }}
+                                                </div>
+                                                @if ($index % 2 == 1)
+                                                    </div>
+                                                @endif
                                             @endforeach
-                                        @else
-                                            <li>Tidak ada fasilitas yang tersedia.</li>
-                                        @endif
-                                    </ul>
+                                            @if (count($facilities) % 2 != 0)
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </td>
                                 </div>
                             </div>
                             <div class="room-price">
-                                <p>Rp {{ number_format($room->price, 2) }}/malam</p>
+                                <p>Rp {{ number_format($room->price_per_night, 2) }}/malam</p>
                                 <a href="{{ route('user.booking.index', $room->id) }}" class="book-room">Pesan Kamar</a>
                             </div>
                         </div>

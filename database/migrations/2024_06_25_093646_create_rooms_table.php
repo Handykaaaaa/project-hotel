@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->decimal('price', 10, 2);
-            $table->integer('total_rooms');
-            $table->integer('total_beds');
-            $table->integer('total_bathrooms');
-            $table->integer('total_guests');
-            $table->string('featured_photo');
+            $table->integer('room_number');
+            $table->unsignedBigInteger('type_id');
+            // $table->text('room_description');
+            // $table->text('featured_photo');
+            // $table->decimal('price_per_night', 8, 2);
+            // $table->integer('capacity');
+            // $table->string('facility');
             $table->timestamps();
+
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
         });
     }
 

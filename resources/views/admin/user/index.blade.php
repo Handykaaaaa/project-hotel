@@ -1,13 +1,13 @@
 @extends('admin.app')
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 @section('content')
-    <div class="p-5 h-screen">
+    <div class="h-screen">
         <h1 class="text-xl text-center font-semibold mb-2">Tipe Kamar</h1>
-        <a href="{{ url('create_user') }}">
-            <button class="btn btn-info btn-md">Tambah User</button>
-        </a>
-        <div class="overflow-auto rounded-lg shadow">
-            <table class="w-full ">
+        <a class="btn bg-green-500 p-2 mb-2 rounded cursor-pointer" data-bs-toggle="modal" data-bs-target="#ModalCreate">Tambah User</a>
+        <div class="table-responsive">
+            <table class="w-full table table-striped table-hover table-bordered">
                 <thead class="bg-gray-300 border-2 border-gray-200">
                     <tr>
                         <th class="p-3 text-sm font-semibold tracking-wide text-left">No</th>
@@ -32,4 +32,42 @@
             </table>
         </div>
     </div>
+
+    {{-- Start Modal  Create--}}
+    <div class="modal fade" id="ModalCreate" tabindex="-1" aria-labelledby="ModalCreateLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalCreateLabel">Buat User Baru</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ url('store_user') }}" method="Post" enctype="multipart/form-data">
+                
+                @csrf
+
+            <div class="modal-body mx-3">
+                <div class="mb-3">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" name="name" id="">
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" id="">
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" id="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal  Create--}}
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

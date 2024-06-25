@@ -34,39 +34,22 @@
         </a>
         <ul class="mt-4">
             <li class="mb-1 group active">
-                <a href="{{ url('show_room') }}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white">
+                <a href="" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white">
                     <i class="fa-solid fa-bed mr-3 text-lg"></i>
-                    <span class="text-sm">Informasi Kamar</span>
+                    <span class="text-sm">Daftar Kamar</span>
                 </a>
             </li>
             <li class="mb-1 group">
                 <a href="{{ url('show_user') }}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white">
                     <i class="fa-solid fa-user mr-3 text-lg"></i>
-                    <span class="text-sm">Informasi User</span>
+                    <span class="text-sm">Daftar User</span>
                 </a>
             </li>
             <li class="mb-1 group">
-                <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white sidebar-dropdown-toggle">
+                <a href="{{url('show_room')}}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white">
                     <i class="fa-solid fa-hotel mr-3 text-lg"></i>
-                    <span class="text-sm">Kelola Kamar</span>
-                    <i class="fa-solid fa-chevron-right ml-auto group-[.active]:rotate-90"></i>
+                    <span class="text-sm">Tipe Kamar</span>
                 </a>
-                <ul class="pl-7 mt-2 hidden group-[.selected]">
-                    <li class="mb-4">
-                        <a href="{{url('create')}}" class="text-gray-300 text-sm flex items-center hover:text-gray-100">
-                            <i class="fa-solid fa-bed mr-3 text-lg"></i>
-                            <span class="before:content-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3"></span>
-                            Tipe Kamar Baru
-                        </a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="text-gray-300 text-sm flex items-center hover:text-gray-100">
-                            <i class="fa-solid fa-bed mr-3 text-lg"></i>
-                            <span class="before:content-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3"></span>
-                            Kamar Baru
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="mb-1 group">
                 <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-800 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white sidebar-dropdown-toggle">

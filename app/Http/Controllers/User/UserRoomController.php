@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Room;
+use App\Models\Type;
 
 
 class UserRoomController extends Controller
@@ -14,7 +14,7 @@ class UserRoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::all();
+        $rooms = Type::all();
         return view('user.index', compact('rooms'));
     }
 
@@ -39,7 +39,7 @@ class UserRoomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Room $rooms)
+    public function show(Type $rooms)
     {
         return view('admin.room.show', ['room' => $rooms]);
     }

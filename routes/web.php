@@ -71,7 +71,6 @@ Route::get('/admin/room/', [AdminRoomController::class,'show'])->name('adminroom
 // Route::get('/adminroom', 'AdminRoomController@index')->name('adminroom.index');
 
 //ADMIN NEW
-route::get('/create', [TypeRoomController::class, 'create']);
 route::post('/store', [TypeRoomController::class, 'store']);
 route::get('/show_room', [TypeRoomController::class, 'show_room']);
 route::get('/delete_room/{id}', [TypeRoomController::class, 'destroy']);
@@ -81,7 +80,6 @@ route::post('/edit/{id}', [TypeRoomController::class, 'update']);
 route::get('/show_user', [AdminUserController::class, 'show_user']);
 route::get('/update_user/{id}', [AdminUserController::class, 'edit']);
 route::post('/edit_user/{id}', [AdminUserController::class, 'update']);
-route::get('/create_user', [AdminUserController::class, 'create']);
 route::post('/store_user', [AdminUserController::class, 'store']);
 route::get('/delete_user/{id}', [AdminUserController::class, 'destroy']);
 
